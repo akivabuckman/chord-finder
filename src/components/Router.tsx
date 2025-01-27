@@ -28,7 +28,7 @@ const Router = () => {
   return (
     <main className='flex-1 flex flex-col'>
         <Routes>
-          {routeOptions.map(page => (
+          {/* {routeOptions.map(page => (
             <Route
               key={page.id}
               path={page.path}
@@ -36,7 +36,7 @@ const Router = () => {
                   <page.component />
               }
             ></Route>
-          ))}
+          ))} */}
         </Routes>
     </main>
   )
