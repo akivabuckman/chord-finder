@@ -1,0 +1,69 @@
+// {
+//   "compilerOptions": {
+//     "target": "ES2020",
+//     "useDefineForClassFields": true,
+//     "lib": ["ES2020", "DOM", "DOM.Iterable"],
+//     "module": "ESNext",
+//     "skipLibCheck": true,
+
+//     /* Bundler mode */
+//     "moduleResolution": "bundler",
+//     "allowImportingTsExtensions": true,
+//     "resolveJsonModule": true,
+//     "isolatedModules": true,
+//     "noEmit": true,
+//     "jsx": "react-jsx",
+
+//     /* Linting */
+//     "strict": true,
+//     "noUnusedLocals": false, //TODO change to true
+//     "noUnusedParameters": false, //TODO change to true
+//     "noFallthroughCasesInSwitch": true,
+
+//     // alias
+//     "baseUrl": ".",
+//     "paths": {
+//       "@/*": ["./src/*", "./dist/*", ""],
+//       "@pages/*": ["src/pages/*"],
+//       "@components/*": ["src/components/*"],
+//       "@styles/*": ["src/styles/*"],
+//       "@hook/*": ["src/hook/*"],
+//       "@locales/*": ["src/locales/*"],
+//       "@image/*": ["src/assets/images/*"],
+//     }
+//   },
+//   "include": ["src"],
+//   "references": [{ "path": "./tsconfig.node.json" }]
+// }
+// filepath: /c:/Users/akiva/coding/personal/chord-finder/tsconfig.json
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "useDefineForClassFields": true,
+    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
+    "skipLibCheck": true,
+    "moduleResolution": "node",
+    "allowImportingTsExtensions": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "react-jsx",
+    "strict": true,
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
+    "noFallthroughCasesInSwitch": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"],
+      "@pages/*": ["src/pages/*"],
+      "@components/*": ["src/components/*"],
+      "@styles/*": ["src/styles/*"],
+      "@hook/*": ["src/hook/*"],
+      "@locales/*": ["src/locales/*"],
+      "@image/*": ["src/assets/images/*"]
+    }
+  },
+  "include": ["src"],
+  "references": [{ "path": "./tsconfig.node.json" }]
+}
