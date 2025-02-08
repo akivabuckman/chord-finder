@@ -8,37 +8,27 @@ export const routeOptions = [
     },
 ];
 
-export const romanChordOptionsFromInterval: {[key: string]: {standard: string[], funky: string[], superFunky?: string[]}} = {
-  '1': {
-    standard: ['I', 'ii', 'IV', 'vi'],
-    funky: ['II', 'iv', 'bVI', 'bII', 'i'],
-    superFunky: []
-  },
-  '2': {
-    standard:['ii', 'iii', 'V',],
-    funky: ['II', 'vii', 'bVII', 'viio', 'v', 'III', 'iv6', 'bIII']
-  },
-  '3': {
-    standard: ['I', 'iii', 'IV', 'vi'],
-    funky: ['III', 'VI', '#iv', '#i']
-  },
-  '4': {
-    standard: ['ii', 'IV', 'V'],
-    funky: ['bVII', 'iv', 'v', 'viio', 'vii', 'bII']
-  },
-  '5': {
-    standard: ['I', 'iii', 'V', 'vi'],
-    funky: ['VI', 'v', 'bVI', 'bIII', 'i']
-  },
-  '6': {
-    standard: ['vi', 'IV', 'ii'],
-    funky: ['VI', 'bVII', 'viio', 'II', 'vii', 'VII']
-  },
-  '7': {
-    standard: ['I', 'viio', 'V', 'iii'],
-    funky: ['III', 'II', 'viio', 'vii', '#i', 'bII7']
-  }
-}
+export const romanChordOptionsFromInterval: {[key: string]: string[]} = {
+  // '1': ['IM', 'iim', 'IVM', 'vim', 'IIm', 'iv', 'bVIM', 'bIIM', 'i'],
+  '1': ['I', 'ii', 'IV', 'vi', 'II', 'iv', 'bVI', 'bII', 'i'],
+  '2': ['ii', 'iii', 'V', 'II', 'vii', 'bVII', 'viio', 'v', 'III', 'iv6', 'bIII'],
+  '3': ['I', 'iii', 'IV', 'vi', 'III', 'VI', '#iv', '#i'],
+  '4': ['ii', 'IV', 'V', 'bVII', 'iv', 'v', 'viio', 'vii', 'bII'],
+  '5': ['I', 'iii', 'V', 'vi', 'VI', 'v', 'bVI', 'bIII', 'i'],
+  '6': ['vi', 'IV', 'ii', 'VI', 'bVII', 'viio', 'II', 'vii', 'VII'],
+  '7': ['I', 'viio', 'V', 'iii', 'III', 'II', 'viio', 'vii', '#i', 'bII7'],
+  'b2': ['VI', 'II', '#vi'],
+  'b3': ['i', 'iv', 'bIII', 'III', 'bVI', 'VII'],
+  'b5': ['V', 'bVI', 'VII', 'II', 'vii'],
+  'b6': ['bVI', 'VI', 'bVII', 'bII', 'III', 'iv'],
+  'b7': ['bVII', 'VII', 'I', 'bIII', 'i', 'v'],
+};
+
+export const romanChordOptions: {standard: string[], funky: string[], superFunky: string[]} = {
+  standard: ['I', 'ii', 'iii', 'IV', 'V', 'vi', 'III'],
+  funky: ['II', 'iv', 'iv6', 'bVI', 'vii', 'bVII', 'viio', 'v', 'VI'],
+  superFunky: ['bII', 'i', 'bIII', '#iv', '#i', 'VII', 'bII']
+};
 
 export const allNotes = [
   ['C', 'C'],
