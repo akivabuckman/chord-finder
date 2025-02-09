@@ -8,23 +8,14 @@ export const chordAlgorithm = (key: string, melodyNote: string) => {
 
 export const findNoteDegree = (rootNote: string, note2: string) => {
     const melodyNoteIndex = allNotes.findIndex(notes => notes.includes(note2));
-    console.log(melodyNoteIndex)
     const songKeyIndex = allNotes.findIndex(notes => notes.includes(rootNote))
-    console.log(songKeyIndex)
     const indexDiff = (melodyNoteIndex - songKeyIndex + 12) % 12;
-    console.log(rootNote, note2)
-    console.log('melnoteind', melodyNoteIndex)
-    console.log('songnoteind', songKeyIndex)
-    console.log('in', indexDiff)
-    console.log(intervals[indexDiff])
     return intervals[indexDiff]
 };
 
 export const getChordNotesFromFrets = (root: string, frets: number[], keyFlatOrSharp: 'b' | '#') => {
     const rootIndex = allNotes.findIndex(notes => notes.includes(root));
-    console.log(rootIndex)
     const notes = frets.map(fret => allNotes[(rootIndex + fret) % 12][keyFlatOrSharp === '#' ? 0 : 1]);
-    console.log(notes)
     return notes;
 };
 

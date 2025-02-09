@@ -7,16 +7,6 @@ export const notesToIndexes = (songKey: string, melodyNote: string) => {
     return { songKeyIndex, melodyNoteIndex };
 };
 
-// export const romanChordToChord = (romanChord: string, songKey: string, keyFlatOrSharp: 'b' | '#'): {chordOption: string, seventh: string} => {
-//     const { accidental, degree, quality, seventh } = romanChordsToMetaData[romanChord];
-//     const accidentalDiff = accidental === '#' ? 1 : accidental === 'b' ? -1 : 0;
-//     const chordRootIntervalIndex = intervals.findIndex(interval => interval === degree) + accidentalDiff;
-//     const chordRoot = allNotes[(allNotes.findIndex(notes => notes.includes(songKey)) + chordRootIntervalIndex) % 12][keyFlatOrSharp === '#' ? 0 : 1];
-//     console.log(romanChord, chordRoot, quality, seventh)
-//     return {chordOption: `${chordRoot}${quality}`, seventh};
-// };
-
-
 export const romanChordToChord = (romanChordOptions: RomanChordOptionsType, songKey: string, keyFlatOrSharp: 'b' | '#', chordType: ChordType): {chordOption: string, seventh: string}[] => {
     const romanChords = romanChordOptions[chordType];
     return romanChords.map(romanChord => {
@@ -26,10 +16,4 @@ export const romanChordToChord = (romanChordOptions: RomanChordOptionsType, song
         const chordRoot = allNotes[(allNotes.findIndex(notes => notes.includes(songKey)) + chordRootIntervalIndex) % 12][keyFlatOrSharp === '#' ? 0 : 1];
         return {chordOption: `${chordRoot}${quality}`, seventh};
     });
-    // const { accidental, degree, quality, seventh } = romanChordsToMetaData[romanChord];
-    // const accidentalDiff = accidental === '#' ? 1 : accidental === 'b' ? -1 : 0;
-    // const chordRootIntervalIndex = intervals.findIndex(interval => interval === degree) + accidentalDiff;
-    // const chordRoot = allNotes[(allNotes.findIndex(notes => notes.includes(songKey)) + chordRootIntervalIndex) % 12][keyFlatOrSharp === '#' ? 0 : 1];
-    // console.log(romanChord, chordRoot, quality, seventh)
-    // return {chordOption: `${chordRoot}${quality}`, seventh};
 };

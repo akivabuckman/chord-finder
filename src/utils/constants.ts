@@ -9,45 +9,39 @@ export const routeOptions = [
 ];
 
 export const romanChordOptionsFromInterval: {[key: string]: string[]} = {
-  '1': ['IM', 'iim', 'IVM', 'vim', 'IIm', 'iv', 'bVIM', 'bIIM', 'im'],
-  '2': ['iim', 'iiim', 'Vm', 'IIm', 'viim', 'bVIIM', 'viiom', 'vm', 'IIIm', 'iv6', 'bIIIM'],
+  '1': ['IM', 'im', 'bIIM', 'iim', 'IIm',  'iv6','IVM','iv',  'vim', 'bVIM'],
+  '2': ['iim', 'IIm','bIIIM','iiim',  'IIIm', 'iv6','Vm', 'vm',   'bVIIM', 'viim','viiom'],
   '3': ['IM', 'iiim', 'IVM', 'vim', 'IIIm', 'VIm', '#iv', '#i'],
-  '4': ['iim', 'IVM', 'Vm', 'bVIIM', 'iv', 'vm', 'viiom', 'viim', 'bIIM'],
+  '4': ['iim', 'IVM', 'Vm', 'bVIIM', 'iv', 'vm', 'viiom', 'viim', 'bIIM', 'iv6'],
   '5': ['IM', 'iiim', 'Vm', 'vim', 'VIm', 'vm', 'bVIM', 'bIIIM', 'i'],
   '6': ['vim', 'IVM', 'iim', 'VIm', 'bVIIM', 'viiom', 'IIm', 'viim', 'VIIm'],
   '7': ['IM', 'viiom', 'Vm', 'iiim', 'IIIm', 'IIm', 'viiom', 'viim', '#i', 'bIIm'],
   'b2': ['VIm', 'IIM', '#ivm'],
   'b3': ['i', 'iv', 'bIIIM', 'IIIM', 'bVIM', 'VIIm'],
   'b5': ['VM', 'bVIm', 'VIIm', 'IIm', 'viim'],
-  'b6': ['bVIM', 'VIM', 'bVIIm', 'bIIM', 'IIIm', 'iv'],
+  'b6': ['bVIM', 'VIM', 'bVIIm', 'bIIM', 'IIIm', 'iv', 'iv6'],
   'b7': ['bVIIM', 'VIIM', 'Im', 'bIIIM', 'im', 'vm'],
 };
 
-// export const romanChords: {standard: string[], funky: string[], superFunky: string[]} = {
-//   standard: ['I', 'ii', 'iii', 'IV', 'V', 'vi', 'III', 'IM', 'iim', 'iiim', 'IVM', 'Vm', 'vim', 'IIIm'],
-//   funky: ['II', 'iv', 'bVI', 'vii', 'bVII', 'viio', 'v', 'VI', 'IIm', 'iv6', 'bVIM', 'viim', 'bVIIM', 'viiom', 'vm', 'VIm', 'Im', 'VIIm'],
-//   superFunky: ['bII', 'i', 'bIII', '#iv', 'VII', 'bIIM', 'im', 'bIIIM', '#ivm', '#i',  'bIIm', 'IIM', 'IIIM', 'VM', 'bVIm', 'VIM', 'bVIIm', 'VIIM']
-// };
-
 export const romanChords: {standard: string[], funky: string[], superFunky: string[]} = {
-  standard: ['I', 'ii', 'iii', 'IV', 'V', 'vi', 'III', 'IM', 'iim', 'iiim', 'IVM', 'Vm', 'vim', 'IIIm'],
-  funky: ['II', 'iv', 'bVI', 'vii', 'bVII', 'viio', 'v', 'VI', 'IIm', 'iv6', 'bVIM', 'viim', 'bVIIM', 'viiom', 'vm', 'VIm', 'Im', 'VIIm'],
-  superFunky: ['bII', 'i', 'bIII', '#iv', 'VII', 'bIIM', 'im', 'bIIIM', '#ivm', '#i',  'bIIm', 'IIM', 'IIIM', 'VM', 'bVIm', 'VIM', 'bVIIm', 'VIIM']
+  standard: ['I', 'IM', 'iim','ii', 'iii', 'III',  'IIIm','iiim', 'IVM',  'IV', 'V', 'Vm', 'vim','vi'],
+  funky: [ 'Im','II', 'IIm', 'iv',   'iv6',  'v', 'vm', 'bVI','bVIM', 'VIm','VI', 'bVIIM','bVII','vii', 'viio', 'viim',  'viiom', 'VIIm'],
+  superFunky: [ 'i',  'im', '#i','bIIM','bII', 'bIIm', 'IIM','bIII',  'bIIIM', 'IIIM','#iv', '#ivm',  'VM', 'bVIm','VIM', 'bVIIm', 'VII',   'VIIM']
 };
 
 export const allNotes = [
-  ['C', 'C'],
-  ['C#', 'Db'],
-  ['D', 'D'],
-  ['D#', 'Eb'],
-  ['E', 'E'],
-  ['F', 'F'],
-  ['F#', 'Gb'],
-  ['G', 'G'],
-  ['G#', 'Ab'],
-  ['A', 'A'],
-  ['A#', 'Bb'],
-  ['B', 'B']
+  ['C', 'C', 'C/C'],
+  ['C#', 'Db', 'C#/Db'],
+  ['D', 'D', 'D/D'],
+  ['D#', 'Eb', 'D#/Eb'],
+  ['E', 'E', 'E/E'],
+  ['F', 'F', 'F/F'],
+  ['F#', 'Gb', 'F#/Gb'],
+  ['G', 'G', 'G/G'],
+  ['G#', 'Ab', 'G#/Ab'],
+  ['A', 'A', 'A/A'],
+  ['A#', 'Bb', 'A#/Bb'],
+  ['B', 'B', 'B/B']
 ];
 
 export const intervals = [
