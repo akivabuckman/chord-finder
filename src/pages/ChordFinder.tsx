@@ -1,6 +1,6 @@
 import { ChordOptionsType } from "@/types/chords";
 import { chordFinderAlgorithm } from "@/utils/chordUtils";
-import { allNotes, songKeyQualityOptions } from "@/utils/constants";
+import { allNotes, isKeyFlatOrSharp, songKeyQualityOptions } from "@/utils/constants";
 import { useEffect, useState } from "react";
 
 const ChordFinder = () => {
@@ -9,6 +9,7 @@ const ChordFinder = () => {
     const [songKey, setSongKey] = useState<string>('C');
     const [melodyNote, setMelodyNote] = useState<string>('E');
     const [melodyInterval, setMelodyInterval] = useState<string>('1');
+    const [songKeyAccidental, setSongKeyAccidental] = useState<'b' | '#' | ''>('');
 
     const calculateChords = (songKey: string, melodyNote: string) => {
         const {chordOptions, interval} = chordFinderAlgorithm(songKey, melodyNote)
@@ -23,6 +24,7 @@ const ChordFinder = () => {
     }, [displayKey]);
     
     useEffect(() => {
+        setSongKeyAccidental(isKeyFlatOrSharp(songKey));
         calculateChords(songKey, melodyNote)
     }, [songKey, melodyNote]);
 
@@ -41,13 +43,12 @@ const ChordFinder = () => {
 
             <label>Melody Note</label>
             <select value={melodyNote} onChange={(e) => setMelodyNote(e.target.value)}>
-                <option value="C">C</option>
-                <option value="D">D</option>
-                <option value="E">E</option>
-                <option value="F">F</option>
-                <option value="G">G</option>
-                <option value="A">A</option>
-                <option value="B">B</option>
+                {allNotes.map((note: string[]) => {
+                    const flatOrSharpIndex = songKeyAccidental === '#' ? 0 : 1;
+                    return (
+                        <option key={note[flatOrSharpIndex]} value={note[flatOrSharpIndex]}>{note[flatOrSharpIndex]}</option>
+                    );
+                })}
             </select>
             <h3>Melody Interval:</h3><span>{melodyInterval}</span>
             {
@@ -55,15 +56,30 @@ const ChordFinder = () => {
                     <div>
                         <h3>Standard</h3>
                         <ul>
-                            {chordOptions.standard.map(chord => (
-                                <li key={chord}>{chord}</li>
-                            ))}
+                            {chordOptions.standard.map(chord => {
+                                const {chordOption, seventh} = chord;
+                                return (
+                                    <li key={chordOption}>{chordOption}<span>{seventh !== '' && `(${seventh})`}</span></li>
+                                )}
+                            )}
                         </ul>
                         <h3>Funky</h3>
                         <ul>
-                            {chordOptions.funky.map(chord => (
-                                <li key={chord}>{chord}</li>
-                            ))}
+                            {chordOptions.funky.map(chord => {
+                                const {chordOption, seventh} = chord;
+                                return (
+                                    <li key={chordOption}>{chordOption}<span>{seventh !== '' && `(${seventh})`}</span></li>
+                                )}
+                            )}
+                        </ul>
+                        <h3>Super Funky</h3>
+                        <ul>
+                            {chordOptions.superFunky.map(chord => {
+                                const {chordOption, seventh} = chord;
+                                return (
+                                    <li key={chordOption}>{chordOption}<span>{seventh !== '' && `(${seventh})`}</span></li>
+                                )}
+                            )}
                         </ul>
                     </div>
                 )

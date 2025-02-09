@@ -1,3 +1,4 @@
+import { ChordType, RomanChordOptionsType } from "@/types/chords";
 import { allNotes, intervals, romanChordsToMetaData } from "./constants";
 
 export const notesToIndexes = (songKey: string, melodyNote: string) => {
@@ -6,10 +7,29 @@ export const notesToIndexes = (songKey: string, melodyNote: string) => {
     return { songKeyIndex, melodyNoteIndex };
 };
 
-export const romanChordToChord = (romanChord: string, songKey: string, keyFlatOrSharp: 'b' | '#') => {
-    const { accidental, degree, quality } = romanChordsToMetaData[romanChord];
-    const accidentalDiff = accidental === '#' ? 1 : accidental === 'b' ? -1 : 0;
-    const chordRootIntervalIndex = intervals.findIndex(interval => interval === degree) + accidentalDiff;
-    const chordRoot = allNotes[(allNotes.findIndex(notes => notes.includes(songKey)) + chordRootIntervalIndex) % 12][keyFlatOrSharp === '#' ? 0 : 1];
-    return `${chordRoot}${quality}`;
+// export const romanChordToChord = (romanChord: string, songKey: string, keyFlatOrSharp: 'b' | '#'): {chordOption: string, seventh: string} => {
+//     const { accidental, degree, quality, seventh } = romanChordsToMetaData[romanChord];
+//     const accidentalDiff = accidental === '#' ? 1 : accidental === 'b' ? -1 : 0;
+//     const chordRootIntervalIndex = intervals.findIndex(interval => interval === degree) + accidentalDiff;
+//     const chordRoot = allNotes[(allNotes.findIndex(notes => notes.includes(songKey)) + chordRootIntervalIndex) % 12][keyFlatOrSharp === '#' ? 0 : 1];
+//     console.log(romanChord, chordRoot, quality, seventh)
+//     return {chordOption: `${chordRoot}${quality}`, seventh};
+// };
+
+
+export const romanChordToChord = (romanChordOptions: RomanChordOptionsType, songKey: string, keyFlatOrSharp: 'b' | '#', chordType: ChordType): {chordOption: string, seventh: string}[] => {
+    const romanChords = romanChordOptions[chordType];
+    return romanChords.map(romanChord => {
+        const { accidental, degree, quality, seventh } = romanChordsToMetaData[romanChord];
+        const accidentalDiff = accidental === '#' ? 1 : accidental === 'b' ? -1 : 0;
+        const chordRootIntervalIndex = intervals.findIndex(interval => interval === degree) + accidentalDiff;
+        const chordRoot = allNotes[(allNotes.findIndex(notes => notes.includes(songKey)) + chordRootIntervalIndex) % 12][keyFlatOrSharp === '#' ? 0 : 1];
+        return {chordOption: `${chordRoot}${quality}`, seventh};
+    });
+    // const { accidental, degree, quality, seventh } = romanChordsToMetaData[romanChord];
+    // const accidentalDiff = accidental === '#' ? 1 : accidental === 'b' ? -1 : 0;
+    // const chordRootIntervalIndex = intervals.findIndex(interval => interval === degree) + accidentalDiff;
+    // const chordRoot = allNotes[(allNotes.findIndex(notes => notes.includes(songKey)) + chordRootIntervalIndex) % 12][keyFlatOrSharp === '#' ? 0 : 1];
+    // console.log(romanChord, chordRoot, quality, seventh)
+    // return {chordOption: `${chordRoot}${quality}`, seventh};
 };

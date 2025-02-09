@@ -9,25 +9,30 @@ export const routeOptions = [
 ];
 
 export const romanChordOptionsFromInterval: {[key: string]: string[]} = {
-  // '1': ['IM', 'iim', 'IVM', 'vim', 'IIm', 'iv', 'bVIM', 'bIIM', 'i'],
-  '1': ['I', 'ii', 'IV', 'vi', 'II', 'iv', 'bVI', 'bII', 'i'],
-  '2': ['ii', 'iii', 'V', 'II', 'vii', 'bVII', 'viio', 'v', 'III', 'iv6', 'bIII'],
-  '3': ['I', 'iii', 'IV', 'vi', 'III', 'VI', '#iv', '#i'],
-  '4': ['ii', 'IV', 'V', 'bVII', 'iv', 'v', 'viio', 'vii', 'bII'],
-  '5': ['I', 'iii', 'V', 'vi', 'VI', 'v', 'bVI', 'bIII', 'i'],
-  '6': ['vi', 'IV', 'ii', 'VI', 'bVII', 'viio', 'II', 'vii', 'VII'],
-  '7': ['I', 'viio', 'V', 'iii', 'III', 'II', 'viio', 'vii', '#i', 'bII7'],
-  'b2': ['VI', 'II', '#vi'],
-  'b3': ['i', 'iv', 'bIII', 'III', 'bVI', 'VII'],
-  'b5': ['V', 'bVI', 'VII', 'II', 'vii'],
-  'b6': ['bVI', 'VI', 'bVII', 'bII', 'III', 'iv'],
-  'b7': ['bVII', 'VII', 'I', 'bIII', 'i', 'v'],
+  '1': ['IM', 'iim', 'IVM', 'vim', 'IIm', 'iv', 'bVIM', 'bIIM', 'im'],
+  '2': ['iim', 'iiim', 'Vm', 'IIm', 'viim', 'bVIIM', 'viiom', 'vm', 'IIIm', 'iv6', 'bIIIM'],
+  '3': ['IM', 'iiim', 'IVM', 'vim', 'IIIm', 'VIm', '#iv', '#i'],
+  '4': ['iim', 'IVM', 'Vm', 'bVIIM', 'iv', 'vm', 'viiom', 'viim', 'bIIM'],
+  '5': ['IM', 'iiim', 'Vm', 'vim', 'VIm', 'vm', 'bVIM', 'bIIIM', 'i'],
+  '6': ['vim', 'IVM', 'iim', 'VIm', 'bVIIM', 'viiom', 'IIm', 'viim', 'VIIm'],
+  '7': ['IM', 'viiom', 'Vm', 'iiim', 'IIIm', 'IIm', 'viiom', 'viim', '#i', 'bIIm'],
+  'b2': ['VIm', 'IIM', '#ivm'],
+  'b3': ['i', 'iv', 'bIIIM', 'IIIM', 'bVIM', 'VIIm'],
+  'b5': ['VM', 'bVIm', 'VIIm', 'IIm', 'viim'],
+  'b6': ['bVIM', 'VIM', 'bVIIm', 'bIIM', 'IIIm', 'iv'],
+  'b7': ['bVIIM', 'VIIM', 'Im', 'bIIIM', 'im', 'vm'],
 };
 
-export const romanChordOptions: {standard: string[], funky: string[], superFunky: string[]} = {
-  standard: ['I', 'ii', 'iii', 'IV', 'V', 'vi', 'III'],
-  funky: ['II', 'iv', 'iv6', 'bVI', 'vii', 'bVII', 'viio', 'v', 'VI'],
-  superFunky: ['bII', 'i', 'bIII', '#iv', '#i', 'VII', 'bII']
+// export const romanChords: {standard: string[], funky: string[], superFunky: string[]} = {
+//   standard: ['I', 'ii', 'iii', 'IV', 'V', 'vi', 'III', 'IM', 'iim', 'iiim', 'IVM', 'Vm', 'vim', 'IIIm'],
+//   funky: ['II', 'iv', 'bVI', 'vii', 'bVII', 'viio', 'v', 'VI', 'IIm', 'iv6', 'bVIM', 'viim', 'bVIIM', 'viiom', 'vm', 'VIm', 'Im', 'VIIm'],
+//   superFunky: ['bII', 'i', 'bIII', '#iv', 'VII', 'bIIM', 'im', 'bIIIM', '#ivm', '#i',  'bIIm', 'IIM', 'IIIM', 'VM', 'bVIm', 'VIM', 'bVIIm', 'VIIM']
+// };
+
+export const romanChords: {standard: string[], funky: string[], superFunky: string[]} = {
+  standard: ['I', 'ii', 'iii', 'IV', 'V', 'vi', 'III', 'IM', 'iim', 'iiim', 'IVM', 'Vm', 'vim', 'IIIm'],
+  funky: ['II', 'iv', 'bVI', 'vii', 'bVII', 'viio', 'v', 'VI', 'IIm', 'iv6', 'bVIM', 'viim', 'bVIIM', 'viiom', 'vm', 'VIm', 'Im', 'VIIm'],
+  superFunky: ['bII', 'i', 'bIII', '#iv', 'VII', 'bIIM', 'im', 'bIIIM', '#ivm', '#i',  'bIIm', 'IIM', 'IIIM', 'VM', 'bVIm', 'VIM', 'bVIIm', 'VIIM']
 };
 
 export const allNotes = [
@@ -110,30 +115,57 @@ export const degreeToFrets: {[key: string]: number} = {
   '7': 11,
 };
 
-export const romanChordsToMetaData: {[key: string]: {accidental: 'b' | '#' | '', degree: string, quality: '' | 'm' | 'o' | 'm6' | '7'}} = {
-  'I': { accidental: '', degree: '1', quality: '' },
-  'ii': { accidental: '', degree: '2', quality: 'm' },
-  'iii': { accidental: '', degree: '3', quality: 'm' },
-  'IV': { accidental: '', degree: '4', quality: '' },
-  'V': { accidental: '', degree: '5', quality: '' },
-  'vi': { accidental: '', degree: '6', quality: 'm' },
-  'viio': { accidental: '', degree: '7', quality: 'o' },
-  'II': { accidental: '', degree: '2', quality: '' },
-  'iv': { accidental: '', degree: '4', quality: 'm' },
-  'bVI': { accidental: 'b', degree: '6', quality: '' },
-  'bII': { accidental: 'b', degree: '2', quality: '' },
-  'i': { accidental: '', degree: '1', quality: 'm' },
-  'vii': { accidental: '', degree: '7', quality: 'm' },
-  'bVII': { accidental: 'b', degree: '7', quality: '' },
-  'v': { accidental: '', degree: '5', quality: 'm' },
-  'III': { accidental: '', degree: '3', quality: '' },
-  'iv6': { accidental: '', degree: '4', quality: 'm6' },
-  'bIII': { accidental: 'b', degree: '3', quality: '' },
-  'VI': { accidental: '', degree: '6', quality: '' },
-  '#iv': { accidental: '#', degree: '4', quality: 'm' },
-  '#i': { accidental: '#', degree: '1', quality: 'm' },
-  'VII': { accidental: '', degree: '7', quality: '' },
-  'bVII7': { accidental: 'b', degree: '7', quality: '7' }
+export const romanChordsToMetaData: {[key: string]: {accidental: 'b' | '#' | '', degree: string, quality: '' | 'm' | 'o' | 'm6', seventh: '' | 'm7' | 'maj7' | '7'}} = {
+  'I': { accidental: '', degree: '1', quality: '', seventh: '' },
+  'ii': { accidental: '', degree: '2', quality: 'm', seventh: '' },
+  'iii': { accidental: '', degree: '3', quality: 'm', seventh: '' },
+  'IV': { accidental: '', degree: '4', quality: '', seventh: '' },
+  'V': { accidental: '', degree: '5', quality: '', seventh: '' },
+  'vi': { accidental: '', degree: '6', quality: 'm', seventh: '' },
+  'viio': { accidental: '', degree: '7', quality: 'o', seventh: '' },
+  'II': { accidental: '', degree: '2', quality: '', seventh: '' },
+  'iv': { accidental: '', degree: '4', quality: 'm', seventh: '' },
+  'bVI': { accidental: 'b', degree: '6', quality: '', seventh: '' },
+  'bII': { accidental: 'b', degree: '2', quality: '', seventh: '' },
+  'i': { accidental: '', degree: '1', quality: 'm', seventh: '' },
+  'vii': { accidental: '', degree: '7', quality: 'm', seventh: '' },
+  'bVII': { accidental: 'b', degree: '7', quality: '', seventh: '' },
+  'v': { accidental: '', degree: '5', quality: 'm', seventh: '' },
+  'III': { accidental: '', degree: '3', quality: '', seventh: '' },
+  'iv6': { accidental: '', degree: '4', quality: 'm6', seventh: '' },
+  'bIII': { accidental: 'b', degree: '3', quality: '', seventh: '' },
+  'VI': { accidental: '', degree: '6', quality: '', seventh: '' },
+  '#iv': { accidental: '#', degree: '4', quality: 'm', seventh: '' },
+  '#i': { accidental: '#', degree: '1', quality: 'm', seventh: '' },
+  'VII': { accidental: '', degree: '7', quality: '', seventh: '' },
+  'IM': { accidental: '', degree: '1', quality: '', seventh: 'maj7' },
+  'iim': { accidental: '', degree: '2', quality: 'm', seventh: '7' },
+  'iiim': { accidental: '', degree: '3', quality: 'm', seventh: '7' },
+  'IVM': { accidental: '', degree: '4', quality: '', seventh: 'maj7' },
+  'Vm': { accidental: '', degree: '5', quality: '', seventh: '7' },
+  'vim': { accidental: '', degree: '6', quality: 'm', seventh: '7' },
+  'IIIm': { accidental: '', degree: '3', quality: '', seventh: '7' },
+  'IIm': { accidental: '', degree: '2', quality: '', seventh: '7' },
+  'bVIM': { accidental: 'b', degree: '6', quality: '', seventh: 'maj7' },
+  'viim': { accidental: '', degree: '7', quality: 'm', seventh: '7' },
+  'bVIIM': { accidental: 'b', degree: '7', quality: '', seventh: 'maj7' },
+  'viiom': { accidental: '', degree: '7', quality: 'o', seventh: '7' },
+  'vm': { accidental: '', degree: '5', quality: 'm', seventh: '7' },
+  'VIm': { accidental: '', degree: '6', quality: '', seventh: '7' },
+  'Im': { accidental: '', degree: '1', quality: '', seventh: '7' },
+  'VIIm': { accidental: '', degree: '7', quality: '', seventh: '7' },
+  'bIIM': { accidental: 'b', degree: '2', quality: '', seventh: 'maj7' },
+  'im': { accidental: '', degree: '1', quality: 'm', seventh: '' },
+  'bIIIM': { accidental: 'b', degree: '3', quality: '', seventh: 'maj7' },
+  '#ivm': { accidental: '#', degree: '4', quality: 'm', seventh: '7' },
+  'bIIm': { accidental: 'b', degree: '2', quality: '', seventh: '7' },
+  'IIM': { accidental: '', degree: '2', quality: '', seventh: 'maj7' },
+  'IIIM': { accidental: '', degree: '3', quality: '', seventh: 'maj7' },
+  'VM': { accidental: '', degree: '5', quality: '', seventh: 'maj7' },
+  'bVIm': { accidental: 'b', degree: '6', quality: '', seventh: '7' },
+  'VIM': { accidental: '', degree: '6', quality: '', seventh: 'maj7' },
+  'bVIIm': { accidental: 'b', degree: '7', quality: '', seventh: '7' },
+  'VIIM': { accidental: '', degree: '7', quality: '', seventh: 'maj7' },
 };
 
 export const chordQualityToNotes = {

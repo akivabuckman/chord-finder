@@ -1,6 +1,6 @@
-import { AlgorithmReturnType, ChordOptionsType } from "@/types/chords";
+import { AlgorithmReturnType, ChordOption, ChordOptionsType, ChordType, RomanChordOptionsType } from "@/types/chords";
 import { notesToIndexes, romanChordToChord } from "./chordTasks";
-import { allNotes, intervals, isKeyFlatOrSharp, romanChordOptionsFromInterval } from "./constants"
+import { allNotes, intervals, isKeyFlatOrSharp, romanChordOptionsFromInterval, romanChords } from "./constants"
 
 export const chordAlgorithm = (key: string, melodyNote: string) => {
 
@@ -38,12 +38,56 @@ export const chordFinderAlgorithm = (songKey: string, melodyNote: string): Algor
     const { songKeyIndex, melodyNoteIndex } = notesToIndexes(songKey, melodyNote); // 7, 11
     const indexDiff = (melodyNoteIndex - songKeyIndex + 12) % 12; // 4
     const interval = intervals[indexDiff]; // 'M3'
-    const romanChordOptions = romanChordOptionsFromInterval[interval]; // {standard: ['I', 'iii', 'IV', 'vi'], funky: ['III', 'VI', '#iv', '#i']}
+    const romanChordOptions: RomanChordOptionsType = {
+        standard: romanChords.standard.map(romanChord => romanChordOptionsFromInterval[interval].includes(romanChord) ? romanChord : null).filter(romanChord => romanChord !== null),
+        funky: romanChords.funky.map(romanChord => romanChordOptionsFromInterval[interval].includes(romanChord) ? romanChord : null).filter(romanChord => romanChord !== null),
+        superFunky: romanChords.superFunky.map(romanChord => romanChordOptionsFromInterval[interval].includes(romanChord) ? romanChord : null).filter(romanChord => romanChord !== null)
+    };
     const keyFlatOrSharp = isKeyFlatOrSharp(songKey); // '#' | 'b'
-    const chordOptions = {
-        standard: romanChordOptions.standard.map(romanChord => romanChordToChord(romanChord, songKey, keyFlatOrSharp)),
-        funky: romanChordOptions.funky.map(romanChord => romanChordToChord(romanChord, songKey, keyFlatOrSharp))
-    }; // {"standard": ["A","C#m","D","F#m"], "funky": ["C#","F#","D#m","A#m"]}
-    console.log(chordOptions)
+    const chordOptions: {standard: ChordOption[], funky: ChordOption[], superFunky: ChordOption[]}  = {
+        standard: romanChordToChord(romanChordOptions, songKey, keyFlatOrSharp, 'standard'),
+        funky: romanChordToChord(romanChordOptions, songKey, keyFlatOrSharp, 'funky'),
+        superFunky: romanChordToChord(romanChordOptions, songKey, keyFlatOrSharp, 'superFunky')
+    }; 
+    // {
+    //     "standard": [
+    //         {
+    //             "chordOption": "C",
+    //             "seventh": "maj7"
+    //         },
+    //         {
+    //             "chordOption": "Em",
+    //             "seventh": "7"
+    //         },
+    //         {
+    //             "chordOption": "F",
+    //             "seventh": "maj7"
+    //         },
+    //         {
+    //             "chordOption": "Am",
+    //             "seventh": "7"
+    //         },
+    //         {
+    //             "chordOption": "E",
+    //             "seventh": "7"
+    //         }
+    //     ],
+    //     "funky": [
+    //         {
+    //             "chordOption": "A",
+    //             "seventh": "7"
+    //         }
+    //     ],
+    //     "superFunky": [
+    //         {
+    //             "chordOption": "F#m",
+    //             "seventh": ""
+    //         },
+    //         {
+    //             "chordOption": "C#m",
+    //             "seventh": ""
+    //         }
+    //     ]
+    // }
     return { chordOptions, interval };
 };
