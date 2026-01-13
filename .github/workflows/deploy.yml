@@ -13,12 +13,6 @@ jobs:
       # 1️⃣ Checkout the repo 
       - uses: actions/checkout@v3
 
-      - name: Debug env
-        run: |
-          echo "AWS_ACCESS_KEY_ID is set? ${AWS_ACCESS_KEY_ID:+yes}"
-          echo "AWS_SECRET_ACCESS_KEY is set? ${AWS_SECRET_ACCESS_KEY:+yes}"
-
-
       # 2️⃣ Configure AWS credentials
       - uses: aws-actions/configure-aws-credentials@v2
         with:
@@ -49,7 +43,7 @@ jobs:
       # 6️⃣ SSH into EC2 and update container
       - uses: appleboy/ssh-action@v0.1.9
         with:
-          host: ec2-52-221-210-41.ap-southeast-1.compute.amazonaws.com
+          host: ${{ vars.EC2_HOST }}
 
           username: ubuntu
           key: ${{ secrets.EC2_SSH_KEY }}
