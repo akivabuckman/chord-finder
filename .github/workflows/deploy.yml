@@ -37,7 +37,7 @@ jobs:
           GIT_SHA=$(git rev-parse --short HEAD)
 
           # Build the Docker image with the SHA as a build-arg
-          docker build --build-arg GIT_SHA=$GIT_SHA -t chord-finder:latest ./chord-finder
+          docker build --build-arg GIT_SHA=$GIT_SHA -t chord-finder:latest .
 
           # Tag it for ECR
           docker tag chord-finder:latest 656301689621.dkr.ecr.ap-southeast-1.amazonaws.com/chord-finder:latest
