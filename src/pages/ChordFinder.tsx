@@ -1,6 +1,6 @@
 import { ChordOptionsType } from "@/types/chords";
 import { chordFinderAlgorithm } from "@/utils/chordUtils";
-import { allNotes, isKeyFlatOrSharp, songKeyQualityOptions } from "@/utils/constants";
+import { allNotes, GIT_SHA, isKeyFlatOrSharp, songKeyQualityOptions } from "@/utils/constants";
 import { useEffect, useState } from "react";
 
 const ChordFinder = () => {
@@ -84,6 +84,7 @@ const ChordFinder = () => {
                     </div>
                 )
             }
+            <p>version: {GIT_SHA}</p>
         </div>
     )
 }

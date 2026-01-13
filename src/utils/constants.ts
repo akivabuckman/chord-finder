@@ -171,3 +171,5 @@ export const chordQualityToNotes = {
 };
 
 export const songKeyQualityOptions = ['Major', 'minor']
+
+export const GIT_SHA = import.meta.env.VITE_GIT_SHA

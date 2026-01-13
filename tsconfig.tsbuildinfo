@@ -1,0 +1,1 @@
+{"root":["./src/app.tsx","./src/main.tsx","./src/vite-env.d.ts","./src/components/router.tsx","./src/pages/chordfinder.tsx","./src/pages/notfound.tsx","./src/types/chords.ts","./src/utils/chordtasks.ts","./src/utils/chordutils.ts","./src/utils/constants.ts"],"version":"5.6.3"}
