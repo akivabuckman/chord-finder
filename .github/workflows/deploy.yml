@@ -49,7 +49,8 @@ jobs:
       # 6️⃣ SSH into EC2 and update container
       - uses: appleboy/ssh-action@v0.1.9
         with:
-          host: ${{ secrets.EC2_HOST }}
+          host: ec2-52-221-210-41.ap-southeast-1.compute.amazonaws.com
+
           username: ubuntu
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
