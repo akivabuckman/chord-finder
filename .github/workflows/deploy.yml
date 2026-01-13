@@ -13,8 +13,11 @@ jobs:
       # 1️⃣ Checkout the repo
       - uses: actions/checkout@v3
 
-      - name: Test AWS credentials
-        run: aws sts get-caller-identity
+      - name: Debug env
+        run: |
+          echo "AWS_ACCESS_KEY_ID is set? ${AWS_ACCESS_KEY_ID:+yes}"
+          echo "AWS_SECRET_ACCESS_KEY is set? ${AWS_SECRET_ACCESS_KEY:+yes}"
+
 
       # 2️⃣ Configure AWS credentials
       - uses: aws-actions/configure-aws-credentials@v2
