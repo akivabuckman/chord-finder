@@ -54,10 +54,10 @@ jobs:
           username: ubuntu
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
-            docker pull ${{ vars.ECR_REGISTRY }}/chord-finder:$GIT_SHA
+            docker pull ${{ vars.ECR_REGISTRY }}/chord-finder:${{ env.GIT_SHA }}
             docker stop chord-finder || true
             docker rm chord-finder || true
             docker run -d \
               --name chord-finder \
               --network web \
-              ${{ vars.ECR_REGISTRY }}/chord-finder:$GIT_SHA
+              ${{ vars.ECR_REGISTRY }}/chord-finder:${{ env.GIT_SHA }}
