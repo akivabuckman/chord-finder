@@ -36,17 +36,16 @@ jobs:
         run: |
           docker build \
             --build-arg GIT_SHA=$GIT_SHA \
-            -t chord-finder:latest .
+            -t chord-finder:$GIT_SHA .
 
       - name: Tag Docker image for ECR
         run: |
-          docker tag chord-finder:latest \
-            ${{ vars.ECR_REGISTRY }}/chord-finder:latest
+          docker tag chord-finder:$GIT_SHA \
+            ${{ vars.ECR_REGISTRY }}/chord-finder:$GIT_SHA
 
       - name: Push Docker image to ECR
         run: |
-          docker push \
-            ${{ vars.ECR_REGISTRY }}/chord-finder:latest
+          docker push ${{ vars.ECR_REGISTRY }}/chord-finder:$GIT_SHA
 
       - name: Deploy container on EC2
         uses: appleboy/ssh-action@v0.1.9
@@ -55,10 +54,10 @@ jobs:
           username: ubuntu
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
-            docker pull ${{ vars.ECR_REGISTRY }}/chord-finder:latest
+            docker pull ${{ vars.ECR_REGISTRY }}/chord-finder:$GIT_SHA
             docker stop chord-finder || true
             docker rm chord-finder || true
             docker run -d \
               --name chord-finder \
               --network web \
-              ${{ vars.ECR_REGISTRY }}/chord-finder:latest
+              ${{ vars.ECR_REGISTRY }}/chord-finder:$GIT_SHA
