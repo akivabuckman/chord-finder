@@ -1,13 +1,3 @@
-import { lazy } from 'react';
-
-export const routeOptions = [
-    {
-      id: 1,
-      path: '/',
-      component: lazy(() => import('@/pages/ChordFinder')),
-    },
-];
-
 export const romanChordOptionsFromInterval: {[key: string]: string[]} = {
   '1': ['IM', 'im', 'bIIM', 'iim', 'IIm',  'iv6','IVM','iv',  'vim', 'bVIM'],
   '2': ['iim', 'IIm','bIIIM','iiim',  'IIIm', 'iv6','Vm', 'vm',   'bVIIM', 'viim','viiom'],
@@ -44,19 +34,55 @@ export const allNotes = [
   ['B', 'B', 'B/B']
 ];
 
-export const intervals = [
-  '1',
-  'b2',
-  '2',
-  'b3',
-  '3',
-  '4',
-  'b5',
-  '5',
-  'b6',
-  '6',
-  'b7',
-  '7'
+export const intervals: {numeric: string, text: string}[] = [
+  {
+    "numeric": '1',
+    "text": "Root",
+  },
+  {
+    "numeric": 'b2',
+    "text": "Flat 2nd",
+  },
+  {
+    "numeric": '2',
+    "text": "2nd",
+  },
+  {
+    "numeric": 'b3',
+    "text": "minor 3rd",
+  },
+  {
+    "numeric": '3',
+    "text": "major 3rd",
+  },
+  {
+    "numeric": '4',
+    "text": "perfect 4th",
+  },
+  {
+    "numeric": 'b5',
+    "text": "diminished 5th",
+  },
+  {
+    "numeric": '5',
+    "text": "perfect 5th",
+  },
+  {
+    "numeric": 'b6',
+    "text": "minor 6th",
+  },
+  {
+    "numeric": '6',
+    "text": "major 6th",
+  },
+  {
+    "numeric": 'b7',
+    "text": "minor 7th",
+  },
+  {
+    "numeric": '7',
+    "text": "major 7th",
+  },
 ];
 
 export const chordNotes: {[key: string]: string[]} = {
@@ -109,7 +135,12 @@ export const degreeToFrets: {[key: string]: number} = {
   '7': 11,
 };
 
-export const romanChordsToMetaData: {[key: string]: {accidental: 'b' | '#' | '', degree: string, quality: '' | 'm' | 'o' | 'm6', seventh: '' | 'm7' | 'maj7' | '7'}} = {
+export const romanChordsToMetaData: {[key: string]: {
+    accidental: 'b' | '#' | '',
+    degree: string,
+    quality: '' | 'm' | 'o' | 'm6',
+    seventh: '' | 'm7' | 'maj7' | '7'
+  }} = {
   'I': { accidental: '', degree: '1', quality: '', seventh: '' },
   'ii': { accidental: '', degree: '2', quality: 'm', seventh: '' },
   'iii': { accidental: '', degree: '3', quality: 'm', seventh: '' },
