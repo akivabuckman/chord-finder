@@ -1,13 +1,3 @@
-import { lazy } from 'react';
-
-export const routeOptions = [
-    {
-      id: 1,
-      path: '/',
-      component: lazy(() => import('@/pages/ChordFinder')),
-    },
-];
-
 export const romanChordOptionsFromInterval: {[key: string]: string[]} = {
   '1': ['IM', 'im', 'bIIM', 'iim', 'IIm',  'iv6','IVM','iv',  'vim', 'bVIM'],
   '2': ['iim', 'IIm','bIIIM','iiim',  'IIIm', 'iv6','Vm', 'vm',   'bVIIM', 'viim','viiom'],
@@ -44,45 +34,56 @@ export const allNotes = [
   ['B', 'B', 'B/B']
 ];
 
-export const intervals = [
-  '1',
-  'b2',
-  '2',
-  'b3',
-  '3',
-  '4',
-  'b5',
-  '5',
-  'b6',
-  '6',
-  'b7',
-  '7'
+export const intervals: {numeric: string, text: string}[] = [
+  {
+    "numeric": '1',
+    "text": "Root",
+  },
+  {
+    "numeric": 'b2',
+    "text": "Flat 2nd",
+  },
+  {
+    "numeric": '2',
+    "text": "2nd",
+  },
+  {
+    "numeric": 'b3',
+    "text": "minor 3rd",
+  },
+  {
+    "numeric": '3',
+    "text": "major 3rd",
+  },
+  {
+    "numeric": '4',
+    "text": "perfect 4th",
+  },
+  {
+    "numeric": 'b5',
+    "text": "diminished 5th",
+  },
+  {
+    "numeric": '5',
+    "text": "perfect 5th",
+  },
+  {
+    "numeric": 'b6',
+    "text": "minor 6th",
+  },
+  {
+    "numeric": '6',
+    "text": "major 6th",
+  },
+  {
+    "numeric": 'b7',
+    "text": "minor 7th",
+  },
+  {
+    "numeric": '7',
+    "text": "major 7th",
+  },
 ];
-
-export const chordNotes: {[key: string]: string[]} = {
-  'I': ['1', '3', '5', '7'],
-  'ii': ['2', '4', '6', '1'],
-  'iii': ['3', '5', '7', '2'],
-  'IV': ['4', '6', '1', '3'],
-  'V': ['5', '7', '2', '4'],
-  'vi': ['6', '1', '3', '5'],
-  'viio': ['7', '2', '4', '6'],
-  'II': ['2', '#4', '6', '1'],
-  'iv': ['4', 'b6', '1'],
-  'bVI': ['b6', '1', 'b3', '5'],
-  'bII': ['b2', '4', 'b6', '1'],
-  'i': ['1', 'b3', '5'],
-  'vii': ['7', '2', '#4', '6'],
-  'bVII': ['b7', '2', '4', '6'],
-  'v': ['5', 'b7', '2', '4'],
-  'III': ['3', '#5', '7', '2'],
-  'iv6': ['4', 'b6', '1', '2'],
-  'bIII': ['b3', '5', 'b7', '2'],
-  'VI': ['6', '#1', '3', '5'],
-  '#iv': ['#4', '6', '#1', '3'],
-  '#i': ['#1', '3', '#5', '7'],
-  'VII': ['7', '#2', '4', '6'],
-};
 
 export const isKeyFlatOrSharp = (root: string): 'b' | '#' => {
   const sharpKeys = ['A', 'B', 'C', 'D', 'E', 'G'];
@@ -109,57 +110,63 @@ export const degreeToFrets: {[key: string]: number} = {
   '7': 11,
 };
 
-export const romanChordsToMetaData: {[key: string]: {accidental: 'b' | '#' | '', degree: string, quality: '' | 'm' | 'o' | 'm6', seventh: '' | 'm7' | 'maj7' | '7'}} = {
-  'I': { accidental: '', degree: '1', quality: '', seventh: '' },
-  'ii': { accidental: '', degree: '2', quality: 'm', seventh: '' },
-  'iii': { accidental: '', degree: '3', quality: 'm', seventh: '' },
-  'IV': { accidental: '', degree: '4', quality: '', seventh: '' },
-  'V': { accidental: '', degree: '5', quality: '', seventh: '' },
-  'vi': { accidental: '', degree: '6', quality: 'm', seventh: '' },
-  'viio': { accidental: '', degree: '7', quality: 'o', seventh: '' },
-  'II': { accidental: '', degree: '2', quality: '', seventh: '' },
-  'iv': { accidental: '', degree: '4', quality: 'm', seventh: '' },
-  'bVI': { accidental: 'b', degree: '6', quality: '', seventh: '' },
-  'bII': { accidental: 'b', degree: '2', quality: '', seventh: '' },
-  'i': { accidental: '', degree: '1', quality: 'm', seventh: '' },
-  'vii': { accidental: '', degree: '7', quality: 'm', seventh: '' },
-  'bVII': { accidental: 'b', degree: '7', quality: '', seventh: '' },
-  'v': { accidental: '', degree: '5', quality: 'm', seventh: '' },
-  'III': { accidental: '', degree: '3', quality: '', seventh: '' },
-  'iv6': { accidental: '', degree: '4', quality: 'm6', seventh: '' },
-  'bIII': { accidental: 'b', degree: '3', quality: '', seventh: '' },
-  'VI': { accidental: '', degree: '6', quality: '', seventh: '' },
-  '#iv': { accidental: '#', degree: '4', quality: 'm', seventh: '' },
-  '#i': { accidental: '#', degree: '1', quality: 'm', seventh: '' },
-  'VII': { accidental: '', degree: '7', quality: '', seventh: '' },
-  'IM': { accidental: '', degree: '1', quality: '', seventh: 'maj7' },
-  'iim': { accidental: '', degree: '2', quality: 'm', seventh: '7' },
-  'iiim': { accidental: '', degree: '3', quality: 'm', seventh: '7' },
-  'IVM': { accidental: '', degree: '4', quality: '', seventh: 'maj7' },
-  'Vm': { accidental: '', degree: '5', quality: '', seventh: '7' },
-  'vim': { accidental: '', degree: '6', quality: 'm', seventh: '7' },
-  'IIIm': { accidental: '', degree: '3', quality: '', seventh: '7' },
-  'IIm': { accidental: '', degree: '2', quality: '', seventh: '7' },
-  'bVIM': { accidental: 'b', degree: '6', quality: '', seventh: 'maj7' },
-  'viim': { accidental: '', degree: '7', quality: 'm', seventh: '7' },
-  'bVIIM': { accidental: 'b', degree: '7', quality: '', seventh: 'maj7' },
-  'viiom': { accidental: '', degree: '7', quality: 'o', seventh: '7' },
-  'vm': { accidental: '', degree: '5', quality: 'm', seventh: '7' },
-  'VIm': { accidental: '', degree: '6', quality: '', seventh: '7' },
-  'Im': { accidental: '', degree: '1', quality: '', seventh: '7' },
-  'VIIm': { accidental: '', degree: '7', quality: '', seventh: '7' },
-  'bIIM': { accidental: 'b', degree: '2', quality: '', seventh: 'maj7' },
-  'im': { accidental: '', degree: '1', quality: 'm', seventh: '' },
-  'bIIIM': { accidental: 'b', degree: '3', quality: '', seventh: 'maj7' },
-  '#ivm': { accidental: '#', degree: '4', quality: 'm', seventh: '7' },
-  'bIIm': { accidental: 'b', degree: '2', quality: '', seventh: '7' },
-  'IIM': { accidental: '', degree: '2', quality: '', seventh: 'maj7' },
-  'IIIM': { accidental: '', degree: '3', quality: '', seventh: 'maj7' },
-  'VM': { accidental: '', degree: '5', quality: '', seventh: 'maj7' },
-  'bVIm': { accidental: 'b', degree: '6', quality: '', seventh: '7' },
-  'VIM': { accidental: '', degree: '6', quality: '', seventh: 'maj7' },
-  'bVIIm': { accidental: 'b', degree: '7', quality: '', seventh: '7' },
-  'VIIM': { accidental: '', degree: '7', quality: '', seventh: 'maj7' },
+export const romanChordsToMetaData: {[key: string]: {
+  accidental: 'b' | '#' | '',
+  degree: string,
+  quality: '' | 'm' | 'o' | 'm6',
+  seventh: '' | 'm7' | 'maj7' | '7',
+  explanation: string
+  }} = {
+  'I': { accidental: '', degree: '1', quality: '', seventh: '', explanation: "The I chord, the 'home'. Contains notes 1, 3, 5" },
+  'ii': { accidental: '', degree: '2', quality: 'm', seventh: '', explanation: "The ii chord. A step away from 'home'. Contains the 2, 4, 6" },
+  'iii': { accidental: '', degree: '3', quality: 'm', seventh: '', explanation: "The iii chord. Away from 'home' but still familiar. Contains the 3, 5, 7" },
+  'IV': { accidental: '', degree: '4', quality: '', seventh: '', explanation: "The IV chord. Takes us away from 'home'" },
+  'V': { accidental: '', degree: '5', quality: '', seventh: '', explanation: 'The V chord. Major chord built on the 5th degree, creates tension that resolves to I.' },
+  'vi': { accidental: '', degree: '6', quality: 'm', seventh: '', explanation: 'The vi chord. Minor chord built on the 6th degree, relative minor of I.' },
+  'viio': { accidental: '', degree: '7', quality: 'o', seventh: '', explanation: 'The vii° chord. Diminished chord built on the 7th degree, leads strongly to I.' },
+  'II': { accidental: '', degree: '2', quality: '', seventh: '', explanation: 'The major II chord. Augments the 4th note to add brightness' },
+  'iv': { accidental: '', degree: '4', quality: 'm', seventh: '', explanation: 'The minor of the IV chord. Flattens the 6th note to add melancholy' },
+  'bVI': { accidental: 'b', degree: '6', quality: '', seventh: '', explanation: "The flat 6's major chord. 'Borrowed' from the minor scale and often leads into bVII and then resolves to the major root" },
+  'bII': { accidental: 'b', degree: '2', quality: '', seventh: '', explanation: "I'll add this explanation soon!" },
+  'i': { accidental: '', degree: '1', quality: 'm', seventh: '', explanation: "I'll add this explanation soon!" },
+  'vii': { accidental: '', degree: '7', quality: 'm', seventh: '', explanation: "I'll add this explanation soon!" },
+  'bVII': { accidental: 'b', degree: '7', quality: '', seventh: '', explanation: "I'll add this explanation soon!" },
+  'v': { accidental: '', degree: '5', quality: 'm', seventh: '', explanation: "I'll add this explanation soon!" },
+  'III': { accidental: '', degree: '3', quality: '', seventh: '', explanation: "I'll add this explanation soon!" },
+  'iv6': { accidental: '', degree: '4', quality: 'm6', seventh: '', explanation: "I'll add this explanation soon!" },
+  'bIII': { accidental: 'b', degree: '3', quality: '', seventh: '', explanation: "I'll add this explanation soon!" },
+  'VI': { accidental: '', degree: '6', quality: '', seventh: '', explanation: "I'll add this explanation soon!" },
+  '#iv': { accidental: '#', degree: '4', quality: 'm', seventh: '', explanation: "I'll add this explanation soon!" },
+  '#i': { accidental: '#', degree: '1', quality: 'm', seventh: '', explanation: "I'll add this explanation soon!" },
+  'VII': { accidental: '', degree: '7', quality: '', seventh: '', explanation: "I'll add this explanation soon!" },
+  'IM': { accidental: '', degree: '1', quality: '', seventh: 'maj7', explanation: "I'll add this explanation soon!" },
+  'iim': { accidental: '', degree: '2', quality: 'm', seventh: '7', explanation: "I'll add this explanation soon!" },
+  'iiim': { accidental: '', degree: '3', quality: 'm', seventh: '7', explanation: "I'll add this explanation soon!" },
+  'IVM': { accidental: '', degree: '4', quality: '', seventh: 'maj7', explanation: "I'll add this explanation soon!" },
+  'Vm': { accidental: '', degree: '5', quality: '', seventh: '7', explanation: "I'll add this explanation soon!" },
+  'vim': { accidental: '', degree: '6', quality: 'm', seventh: '7', explanation: "I'll add this explanation soon!" },
+  'IIIm': { accidental: '', degree: '3', quality: '', seventh: '7', explanation: "I'll add this explanation soon!" },
+  'IIm': { accidental: '', degree: '2', quality: '', seventh: '7', explanation: "I'll add this explanation soon!" },
+  'bVIM': { accidental: 'b', degree: '6', quality: '', seventh: 'maj7', explanation: "I'll add this explanation soon!" },
+  'viim': { accidental: '', degree: '7', quality: 'm', seventh: '7', explanation: "I'll add this explanation soon!" },
+  'bVIIM': { accidental: 'b', degree: '7', quality: '', seventh: 'maj7', explanation: "I'll add this explanation soon!" },
+  'viiom': { accidental: '', degree: '7', quality: 'o', seventh: '7', explanation: "I'll add this explanation soon!" },
+  'vm': { accidental: '', degree: '5', quality: 'm', seventh: '7', explanation: "I'll add this explanation soon!" },
+  'VIm': { accidental: '', degree: '6', quality: '', seventh: '7', explanation: "I'll add this explanation soon!" },
+  'Im': { accidental: '', degree: '1', quality: '', seventh: '7', explanation: "I'll add this explanation soon!" },
+  'VIIm': { accidental: '', degree: '7', quality: '', seventh: '7', explanation: "I'll add this explanation soon!" },
+  'bIIM': { accidental: 'b', degree: '2', quality: '', seventh: 'maj7', explanation: "I'll add this explanation soon!" },
+  'im': { accidental: '', degree: '1', quality: 'm', seventh: '', explanation: "I'll add this explanation soon!" },
+  'bIIIM': { accidental: 'b', degree: '3', quality: '', seventh: 'maj7', explanation: "I'll add this explanation soon!" },
+  '#ivm': { accidental: '#', degree: '4', quality: 'm', seventh: '7', explanation: "I'll add this explanation soon!" },
+  'bIIm': { accidental: 'b', degree: '2', quality: '', seventh: '7', explanation: "I'll add this explanation soon!" },
+  'IIM': { accidental: '', degree: '2', quality: '', seventh: 'maj7', explanation: "I'll add this explanation soon!" },
+  'IIIM': { accidental: '', degree: '3', quality: '', seventh: 'maj7', explanation: "I'll add this explanation soon!" },
+  'VM': { accidental: '', degree: '5', quality: '', seventh: 'maj7', explanation: "I'll add this explanation soon!" },
+  'bVIm': { accidental: 'b', degree: '6', quality: '', seventh: '7', explanation: "I'll add this explanation soon!" },
+  'VIM': { accidental: '', degree: '6', quality: '', seventh: 'maj7', explanation: "I'll add this explanation soon!" },
+  'bVIIm': { accidental: 'b', degree: '7', quality: '', seventh: '7', explanation: "I'll add this explanation soon!" },
+  'VIIM': { accidental: '', degree: '7', quality: '', seventh: 'maj7', explanation: "I'll add this explanation soon!" },
 };
 
 export const chordQualityToNotes = {

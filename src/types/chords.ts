@@ -9,7 +9,11 @@ export interface AlgorithmReturnType {
     interval: string;
 };
 
-export interface ChordOption {chordOption: string, seventh: string};
+export interface ChordOption {
+    chordOption: string,
+    seventh: string,
+    explanation: string
+};
 
 export type ChordType = 'standard' | 'funky' | 'superFunky';
 
