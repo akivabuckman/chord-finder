@@ -39,6 +39,7 @@ export const chordFinderAlgorithm = (songKey: string, melodyNote: string): Algor
         standard: romanChordToChord(romanChordOptions, songKey, keyFlatOrSharp, 'standard'),
         funky: romanChordToChord(romanChordOptions, songKey, keyFlatOrSharp, 'funky'),
         superFunky: romanChordToChord(romanChordOptions, songKey, keyFlatOrSharp, 'superFunky')
-    }; 
+    };
+    console.log(chordOptions)
     return { chordOptions, interval: interval.text };
 };

@@ -12,8 +12,7 @@ export interface AlgorithmReturnType {
 export interface ChordOption {
     chordOption: string,
     seventh: string,
-    label?: string,
-    name?: string
+    explanation: string
 };
 
 export type ChordType = 'standard' | 'funky' | 'superFunky';
