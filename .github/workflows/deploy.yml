@@ -50,7 +50,7 @@ jobs:
       - name: Deploy container on EC2
         uses: appleboy/ssh-action@v0.1.9
         with:
-          host: ${{ vars.EC2_HOST }}
+          host: ${{ secrets.EC2_HOST }}
           username: ubuntu
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
