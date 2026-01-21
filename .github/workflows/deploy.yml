@@ -64,4 +64,6 @@ jobs:
             docker run -d \
               --name chord-finder \
               --network web \
+              -e VIRTUAL_HOST=akivabuckman.com \
+              -e VIRTUAL_PATH=/music/chord-finder \
               ${{ vars.ECR_REGISTRY }}/chord-finder:${{ env.GIT_SHA }}
