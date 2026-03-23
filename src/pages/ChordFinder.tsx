@@ -16,6 +16,8 @@ const ChordFinder = () => {
 
     const [openItem, setOpenItem] = useState<{ section: string, idx: number } | null>(null);
 
+    const isEmbedded: boolean = new URLSearchParams(window.location.search).get('embedded') === 'true';
+
     const calculateChords = (songKey: string, melodyNote: string) => {
         const {chordOptions, interval} = chordFinderAlgorithm(songKey, melodyNote)
         setChordOptions(chordOptions);
@@ -45,6 +47,7 @@ const ChordFinder = () => {
         <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50 p-8 dark:bg-gradient-to-br dark:from-blue-950 dark:via-gray-900 dark:to-purple-950 dark:text-gray-100">
             <div className="max-w-6xl mx-auto">
                 {/* Header */}
+                {!isEmbedded && (
                 <div className="text-center mb-12">
                     <div className="flex items-center justify-center gap-3 mb-4">
                         <Music className="w-10 h-10 text-blue-600 dark:text-blue-300" />
@@ -53,6 +56,7 @@ const ChordFinder = () => {
                     <p className="text-gray-600 dark:text-gray-300">Discover the chords for your melody</p>
                     <p className="text-gray-600 dark:text-gray-300">e.g. if you're playing a song in C Major, and the melody's note is E, the chords listed below are your options!</p>
                 </div>
+                )}
 
                 {/* Controls */}
                 <div className="bg-white rounded-xl shadow-lg p-8 mb-8 border border-gray-200 dark:bg-gray-900 dark:border-gray-700">
