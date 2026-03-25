@@ -141,10 +141,26 @@ const ChordFinder = () => {
                 )}
 
                 {/* Footer */}
-                <div className="text-center text-sm text-gray-500 dark:text-gray-400">
-                    <p>Version {GIT_SHA}</p>
-                </div>
+                {!isEmbedded && (
+                    <div className="text-center text-sm text-gray-500 dark:text-gray-400">
+                        <p>Version {GIT_SHA}</p>
+                    </div>
+                )}
             </div>
+            {!isEmbedded && (
+                <footer className="fixed bottom-0 left-0 right-0 text-center text-zinc-200 text-xs py-2 px-4 bg-gradient-to-r from-blue-900 via-orange-900 to-blue-900 border-t border-zinc-600 select-none tracking-wide">
+                    ✨ Everything here was made by yours truly - 🖥️ frontend, 🚀 CI, and ☁️ AWS. See more projects at{' '}
+                    <a
+                        href="https://akivabuckman.com"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="underline hover:text-white pointer-events-auto"
+                    >
+                        akivabuckman.com
+                    </a>
+                    {' '}✨
+                </footer>
+            )}
         </div>
     );
 }
